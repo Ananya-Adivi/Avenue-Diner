@@ -211,17 +211,28 @@
             <button class="tab active" data-category="all" role="tab" aria-selected="true">All day</button>
             <button class="tab" data-category="breakfast" role="tab" aria-selected="false">Breakfast</button>
             <button class="tab" data-category="lunch" role="tab" aria-selected="false">Lunch &amp; dinner</button>
+            <button class="tab" data-category="vegetarian" role="tab" aria-selected="false">Vegetarian</button>
+            <button class="tab" data-category="vegan" role="tab" aria-selected="false">Vegan</button>
             <button class="tab" data-category="sweet" role="tab" aria-selected="false">Something sweet</button>
           </div>
           <div class="menu-list">
             <article class="menu-item" data-category="breakfast"><div><h3>The Avenue Stack</h3><p>Buttermilk pancakes, whipped butter, maple syrup, berries</p></div><span class="price">$14</span></article>
             <article class="menu-item" data-category="breakfast"><div><h3>Green Eggs &amp; Ham</h3><p>Soft scrambled eggs, herb pesto, sourdough, smoked ham</p></div><span class="price">$16</span></article>
+            <article class="menu-item" data-category="breakfast"><div><h3>Garden Sunrise Bowl</h3><p>Avocado, roasted tomatoes, spinach, quinoa, lemon tahini</p></div><span class="price">$15</span></article>
             <article class="menu-item" data-category="lunch"><div><h3>House Cheeseburger</h3><p>Dry-aged beef, American cheese, pickles, special sauce, fries</p></div><span class="price">$19</span></article>
             <article class="menu-item" data-category="lunch"><div><h3>Chicken Schnitzel</h3><p>Crispy chicken, shaved fennel, lemon, warm potato salad</p></div><span class="price">$22</span></article>
             <article class="menu-item" data-category="lunch"><div><h3>Market Caesar</h3><p>Little gem, parmesan, sourdough crumbs, anchovy dressing</p></div><span class="price">$15</span></article>
             <article class="menu-item" data-category="lunch"><div><h3>Midnight Spaghetti</h3><p>Garlic, chili, tomato, basil, pecorino, olive oil</p></div><span class="price">$18</span></article>
+            <article class="menu-item" data-category="vegetarian"><div><h3>Wild Mushroom Risotto</h3><p>Creamy arborio rice, roasted mushrooms, parmesan, thyme</p></div><span class="price">$21</span></article>
+            <article class="menu-item" data-category="vegetarian"><div><h3>Spinach &amp; Ricotta Gnocchi</h3><p>Brown butter sauce, sage, toasted hazelnuts, lemon zest</p></div><span class="price">$20</span></article>
+            <article class="menu-item" data-category="vegetarian"><div><h3>Margherita Flatbread</h3><p>Wood-fired pizza, fresh mozzarella, basil, tomato glaze</p></div><span class="price">$17</span></article>
+            <article class="menu-item" data-category="vegan"><div><h3>Charred Cauliflower Steak</h3><p>Smoky chickpea puree, greens, saffron couscous, herbs</p></div><span class="price">$19</span></article>
+            <article class="menu-item" data-category="vegan"><div><h3>Roasted Beet Quinoa Bowl</h3><p>Beets, greens, roasted pumpkin, citrus vinaigrette, seeds</p></div><span class="price">$18</span></article>
+            <article class="menu-item" data-category="vegan"><div><h3>Smoky Lentil Burger</h3><p>House-made lentil patty, lettuce, tomato, onion, vegan aioli</p></div><span class="price">$17</span></article>
             <article class="menu-item" data-category="sweet"><div><h3>Salted Caramel Pie</h3><p>Silky caramel custard, flaky crust, sea salt, cream</p></div><span class="price">$10</span></article>
             <article class="menu-item" data-category="sweet"><div><h3>Soft Serve Sundae</h3><p>Vanilla soft serve, chocolate shell, roasted peanuts, cherry</p></div><span class="price">$8</span></article>
+            <article class="menu-item" data-category="vegan"><div><h3>Coconut Berry Oat Bowl</h3><p>Oats, coconut milk, berries, chia, maple, toasted almonds</p></div><span class="price">$11</span></article>
+            <article class="menu-item" data-category="vegetarian"><div><h3>Honeycomb Cheesecake</h3><p>Vanilla bean cheesecake, blueberry compote, oat crumble</p></div><span class="price">$12</span></article>
           </div>
         </div>
       </section>
@@ -283,7 +294,8 @@
           item.setAttribute('aria-selected', String(isActive));
         });
         menuItems.forEach((item) => {
-          item.classList.toggle('hidden', category !== 'all' && item.dataset.category !== category);
+          const matches = category === 'all' || item.dataset.category === category;
+          item.classList.toggle('hidden', !matches);
         });
       });
     });
