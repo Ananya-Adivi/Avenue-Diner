@@ -1,0 +1,302 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Avenue Diner - all-day comfort food, proper coffee, and a little bit of mischief in the heart of the city.">
+  <title>Avenue Diner | All Day, Every Day</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=DM+Mono:wght@400;500&family=Playfair+Display:wght@600;700;800&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --plum: #301b2d;
+      --plum-light: #4b2b44;
+      --ink: #282127;
+      --cream: #f7f0e5;
+      --paper: #fffaf2;
+      --saffron: #f0a83b;
+      --coral: #d9674f;
+      --sage: #dce0c7;
+      --muted: #786e73;
+      --line: rgba(48, 27, 45, .16);
+      --serif: "Playfair Display", Georgia, serif;
+      --sans: "DM Sans", Arial, sans-serif;
+      --mono: "DM Mono", monospace;
+    }
+
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body { margin: 0; background: var(--cream); color: var(--ink); font-family: var(--sans); }
+    a { color: inherit; text-decoration: none; }
+    button, input, select { font: inherit; }
+    button { cursor: pointer; }
+    .page-shell { overflow: hidden; }
+
+    .topline { background: var(--saffron); color: var(--plum); padding: 10px 5vw; text-align: center; font: 500 11px var(--mono); letter-spacing: .08em; text-transform: uppercase; }
+    .nav-wrap { background: var(--plum); color: var(--cream); padding: 25px 5vw; }
+    nav { max-width: 1260px; margin: 0 auto; display: flex; align-items: center; justify-content: space-between; gap: 24px; }
+    .brand { display: flex; align-items: center; gap: 12px; font: 700 22px var(--serif); letter-spacing: -.02em; }
+    .brand-mark { display: grid; place-items: center; width: 34px; height: 34px; border: 1px solid var(--saffron); border-radius: 50%; color: var(--saffron); font: 500 15px var(--mono); }
+    .nav-links { display: flex; align-items: center; gap: 30px; color: #e8d8d3; font-size: 13px; }
+    .nav-links a { transition: color .2s ease; }
+    .nav-links a:hover { color: var(--saffron); }
+    .nav-cta { border: 1px solid var(--saffron); color: var(--saffron); padding: 11px 17px; font-size: 12px; font-weight: 700; text-transform: uppercase; letter-spacing: .06em; }
+
+    .hero { position: relative; min-height: 660px; background: var(--plum); color: var(--cream); }
+    .hero::before { content: ""; position: absolute; inset: 0 0 0 46%; background: url("https://images.unsplash.com/photo-1515003197210-e0cd71810b5f?auto=format&fit=crop&w=1500&q=85") center/cover; }
+    .hero::after { content: ""; position: absolute; inset: 0; background: linear-gradient(90deg, var(--plum) 0%, rgba(48,27,45,.98) 35%, rgba(48,27,45,.18) 68%, rgba(48,27,45,.08)); pointer-events: none; }
+    .hero-inner { position: relative; z-index: 1; max-width: 1260px; min-height: 660px; margin: 0 auto; padding: 92px 5vw 80px; display: flex; align-items: center; }
+    .hero-copy { max-width: 630px; }
+    .eyebrow { display: flex; align-items: center; gap: 12px; color: var(--saffron); font: 500 11px var(--mono); letter-spacing: .12em; text-transform: uppercase; }
+    .eyebrow::before { content: ""; width: 38px; height: 1px; background: currentColor; }
+    h1 { margin: 22px 0 24px; max-width: 650px; font: 700 clamp(52px, 8vw, 104px)/.93 var(--serif); letter-spacing: -.055em; }
+    .hero-copy p { max-width: 420px; margin: 0; color: #d9c9c8; font-size: 16px; line-height: 1.7; }
+    .hero-actions { display: flex; align-items: center; gap: 20px; margin-top: 36px; }
+    .button { display: inline-flex; align-items: center; justify-content: center; border: 0; padding: 14px 22px; background: var(--saffron); color: var(--plum); font-size: 12px; font-weight: 700; letter-spacing: .07em; text-transform: uppercase; transition: transform .2s ease, background .2s ease; }
+    .button:hover { background: #ffc666; transform: translateY(-2px); }
+    .text-link { color: var(--cream); font-size: 13px; border-bottom: 1px solid rgba(247,240,229,.55); padding-bottom: 4px; }
+    .hero-note { position: absolute; z-index: 2; right: 5vw; bottom: 34px; display: flex; align-items: center; gap: 12px; color: #fff8ed; font: 11px var(--mono); }
+    .hero-note span { color: var(--saffron); font-size: 22px; }
+
+    .ticker { border-bottom: 1px solid var(--line); background: var(--paper); padding: 15px 5vw; color: var(--plum); font: 500 11px var(--mono); letter-spacing: .1em; text-transform: uppercase; }
+    .ticker-inner { max-width: 1260px; margin: 0 auto; display: flex; justify-content: space-between; gap: 24px; }
+    .ticker strong { color: var(--coral); font-weight: 500; }
+
+    .section { max-width: 1260px; margin: 0 auto; padding: 110px 5vw; }
+    .section-heading { display: flex; align-items: end; justify-content: space-between; gap: 30px; margin-bottom: 46px; }
+    .section-heading h2 { max-width: 580px; margin: 14px 0 0; font: 700 clamp(38px, 5vw, 65px)/1 var(--serif); letter-spacing: -.045em; }
+    .section-heading p { max-width: 290px; margin: 0; color: var(--muted); font-size: 14px; line-height: 1.65; }
+    .cream-label { color: var(--coral); }
+
+    .story-grid { display: grid; grid-template-columns: 1fr .82fr; gap: 9vw; align-items: center; }
+    .story-photo { position: relative; min-height: 490px; background: url("https://images.unsplash.com/photo-1552566626-52f8b828add9?auto=format&fit=crop&w=1100&q=85") center/cover; }
+    .story-photo::after { content: "EST. 1987"; position: absolute; right: -35px; bottom: 32px; padding: 17px 14px; background: var(--saffron); color: var(--plum); writing-mode: vertical-rl; font: 500 12px var(--mono); letter-spacing: .12em; }
+    .story-copy h3 { margin: 0 0 20px; font: 700 37px/1.05 var(--serif); letter-spacing: -.03em; }
+    .story-copy p { max-width: 445px; margin: 0 0 18px; color: var(--muted); font-size: 15px; line-height: 1.8; }
+    .signature { margin-top: 34px; font: 700 25px var(--serif); color: var(--plum); }
+    .signature small { display: block; margin-top: 6px; color: var(--coral); font: 10px var(--mono); letter-spacing: .08em; text-transform: uppercase; }
+
+    .menu-band { background: var(--plum); color: var(--cream); }
+    .menu-band .section { padding-top: 100px; padding-bottom: 110px; }
+    .menu-band .eyebrow { color: var(--saffron); }
+    .menu-band .section-heading p { color: #cab8bd; }
+    .menu-tabs { display: flex; gap: 10px; flex-wrap: wrap; margin-bottom: 38px; }
+    .tab { border: 1px solid rgba(247,240,229,.28); background: transparent; color: #cdbdc0; padding: 11px 17px; font: 500 11px var(--mono); letter-spacing: .07em; text-transform: uppercase; }
+    .tab.active, .tab:hover { border-color: var(--saffron); background: var(--saffron); color: var(--plum); }
+    .menu-list { display: grid; grid-template-columns: repeat(2, 1fr); column-gap: 8vw; }
+    .menu-item { display: grid; grid-template-columns: 1fr auto; gap: 20px; padding: 22px 0; border-top: 1px solid rgba(247,240,229,.18); }
+    .menu-item h3 { margin: 0 0 7px; color: var(--cream); font: 600 20px var(--serif); }
+    .menu-item p { margin: 0; color: #bdaeb1; font-size: 13px; line-height: 1.5; }
+    .price { color: var(--saffron); font: 500 14px var(--mono); }
+    .menu-item.hidden { display: none; }
+
+    .feature-strip { display: grid; grid-template-columns: 1.15fr .85fr; background: var(--sage); }
+    .feature-image { min-height: 500px; background: url("https://images.unsplash.com/photo-1473093295043-cdd812d0e601?auto=format&fit=crop&w=1200&q=85") center/cover; }
+    .feature-copy { display: flex; flex-direction: column; justify-content: center; padding: 80px clamp(35px, 7vw, 110px); }
+    .feature-copy h2 { margin: 15px 0 18px; max-width: 470px; font: 700 clamp(38px, 4vw, 58px)/1 var(--serif); letter-spacing: -.045em; color: var(--plum); }
+    .feature-copy p { max-width: 405px; margin: 0 0 26px; color: #5e6653; line-height: 1.75; font-size: 14px; }
+    .feature-copy .button { align-self: flex-start; background: var(--plum); color: var(--cream); }
+    .feature-copy .button:hover { background: var(--plum-light); }
+
+    .reserve-section { background: var(--paper); }
+    .reserve-grid { display: grid; grid-template-columns: .8fr 1.2fr; gap: 10vw; align-items: start; }
+    .reserve-copy h2 { margin: 14px 0 20px; font: 700 clamp(40px, 5vw, 65px)/.98 var(--serif); letter-spacing: -.05em; }
+    .reserve-copy p { max-width: 330px; margin: 0; color: var(--muted); font-size: 14px; line-height: 1.7; }
+    .details { margin-top: 40px; border-top: 1px solid var(--line); }
+    .detail { display: flex; justify-content: space-between; gap: 30px; padding: 16px 0; border-bottom: 1px solid var(--line); font-size: 13px; }
+    .detail span:first-child { color: var(--muted); }
+    .detail span:last-child { color: var(--plum); font-weight: 600; text-align: right; }
+    .reservation-form { display: grid; grid-template-columns: repeat(2, 1fr); gap: 20px; padding: 32px; border: 1px solid var(--line); background: var(--cream); }
+    .field { display: grid; gap: 8px; }
+    .field.full { grid-column: 1 / -1; }
+    label { color: var(--plum); font: 500 10px var(--mono); letter-spacing: .1em; text-transform: uppercase; }
+    input, select { width: 100%; border: 1px solid var(--line); border-radius: 0; background: var(--paper); color: var(--ink); padding: 14px; outline: none; }
+    input:focus, select:focus { border-color: var(--coral); box-shadow: 0 0 0 2px rgba(217,103,79,.14); }
+    .form-footer { display: flex; align-items: center; justify-content: space-between; gap: 20px; grid-column: 1 / -1; margin-top: 10px; }
+    .form-note { color: var(--muted); font-size: 12px; }
+    .success-message { display: none; grid-column: 1 / -1; padding: 14px; background: var(--sage); color: var(--plum); font-size: 13px; }
+    .success-message.show { display: block; }
+
+    footer { background: var(--plum); color: var(--cream); padding: 65px 5vw 30px; }
+    .footer-top { max-width: 1260px; margin: 0 auto 70px; display: flex; justify-content: space-between; gap: 40px; }
+    .footer-top h2 { max-width: 420px; margin: 14px 0 0; font: 700 47px/1 var(--serif); letter-spacing: -.04em; }
+    .footer-contact { display: grid; align-content: end; gap: 8px; color: #cdbdc0; font-size: 13px; }
+    .footer-contact a:hover { color: var(--saffron); }
+    .footer-bottom { max-width: 1260px; margin: 0 auto; padding-top: 20px; border-top: 1px solid rgba(247,240,229,.2); display: flex; justify-content: space-between; color: #9f8d93; font: 10px var(--mono); letter-spacing: .06em; text-transform: uppercase; }
+
+    @media (max-width: 800px) {
+      .nav-links { display: none; }
+      .hero { min-height: 680px; }
+      .hero::before { inset: 38% 0 0; }
+      .hero::after { background: linear-gradient(180deg, var(--plum) 0%, rgba(48,27,45,.96) 40%, rgba(48,27,45,.1) 100%); }
+      .hero-inner { min-height: 680px; padding-top: 70px; align-items: flex-start; }
+      h1 { font-size: clamp(52px, 15vw, 82px); }
+      .hero-note { right: 5vw; bottom: 18px; }
+      .ticker-inner { overflow: hidden; white-space: nowrap; }
+      .ticker-inner span:nth-child(2) { display: none; }
+      .section { padding-top: 75px; padding-bottom: 75px; }
+      .section-heading, .story-grid, .reserve-grid { display: block; }
+      .section-heading p { margin-top: 22px; }
+      .story-photo { min-height: 360px; margin-bottom: 62px; }
+      .story-photo::after { right: 15px; bottom: -25px; }
+      .story-copy p { max-width: none; }
+      .menu-list { display: block; }
+      .feature-strip { display: block; }
+      .feature-image { min-height: 330px; }
+      .feature-copy { padding: 68px 8vw; }
+      .reserve-copy { margin-bottom: 45px; }
+      .reservation-form { padding: 20px; }
+      .form-footer { display: grid; }
+      .form-footer .button { width: 100%; }
+      .footer-top, .footer-bottom { display: block; }
+      .footer-contact { margin-top: 35px; }
+      .footer-bottom span { display: block; margin-top: 12px; }
+    }
+  </style>
+</head>
+<body>
+  <div class="page-shell">
+    <div class="topline">Open daily from 7am &nbsp; / &nbsp; Walk-ins always welcome</div>
+    <header class="nav-wrap">
+      <nav aria-label="Main navigation">
+        <a class="brand" href="#top"><span class="brand-mark">A</span> Avenue Diner</a>
+        <div class="nav-links">
+          <a href="#story">Our story</a>
+          <a href="#menu">Menu</a>
+          <a href="#visit">Visit us</a>
+        </div>
+        <a class="nav-cta" href="#reserve">Book a table</a>
+      </nav>
+    </header>
+
+    <main id="top">
+      <section class="hero">
+        <div class="hero-inner">
+          <div class="hero-copy">
+            <div class="eyebrow">The neighborhood classic</div>
+            <h1>Good food.<br>Good people.<br>Good times.</h1>
+            <p>All-day comfort food, proper coffee, and a little bit of mischief in the heart of the city.</p>
+            <div class="hero-actions">
+              <a class="button" href="#menu">See the menu</a>
+              <a class="text-link" href="#reserve">Make a reservation</a>
+            </div>
+          </div>
+        </div>
+        <div class="hero-note"><span>✦</span> No fuss. No dress code. No bad coffee.</div>
+      </section>
+
+      <div class="ticker"><div class="ticker-inner"><span><strong>Today's special</strong> &nbsp; Crispy chicken schnitzel &nbsp; · &nbsp; Lemon &amp; herbs</span><span>Breakfast served all day</span><span>✦</span></div></div>
+
+      <section class="section" id="story">
+        <div class="story-grid">
+          <div class="story-photo" role="img" aria-label="A sunlit diner dining room"></div>
+          <div class="story-copy">
+            <div class="eyebrow cream-label">A short history</div>
+            <h3>Made for lingering.</h3>
+            <p>Avenue started with a simple idea: a place where the coffee is hot, the booths are comfy, and nobody rushes you out the door.</p>
+            <p>Thirty-seven years later, we're still here. Same spirit, a few more plants, and a menu that travels from fluffy pancakes to late-night cheeseburgers.</p>
+            <div class="signature">See you at Avenue.<small>— The A team</small></div>
+          </div>
+        </div>
+      </section>
+
+      <section class="menu-band" id="menu">
+        <div class="section">
+          <div class="section-heading">
+            <div><div class="eyebrow">From the kitchen</div><h2>Classics, with<br>good instincts.</h2></div>
+            <p>Big flavors, familiar faces. Everything is made to order, from our first coffee to our last slice of pie.</p>
+          </div>
+          <div class="menu-tabs" role="tablist" aria-label="Menu categories">
+            <button class="tab active" data-category="all" role="tab" aria-selected="true">All day</button>
+            <button class="tab" data-category="breakfast" role="tab" aria-selected="false">Breakfast</button>
+            <button class="tab" data-category="lunch" role="tab" aria-selected="false">Lunch &amp; dinner</button>
+            <button class="tab" data-category="sweet" role="tab" aria-selected="false">Something sweet</button>
+          </div>
+          <div class="menu-list">
+            <article class="menu-item" data-category="breakfast"><div><h3>The Avenue Stack</h3><p>Buttermilk pancakes, whipped butter, maple syrup, berries</p></div><span class="price">$14</span></article>
+            <article class="menu-item" data-category="breakfast"><div><h3>Green Eggs &amp; Ham</h3><p>Soft scrambled eggs, herb pesto, sourdough, smoked ham</p></div><span class="price">$16</span></article>
+            <article class="menu-item" data-category="lunch"><div><h3>House Cheeseburger</h3><p>Dry-aged beef, American cheese, pickles, special sauce, fries</p></div><span class="price">$19</span></article>
+            <article class="menu-item" data-category="lunch"><div><h3>Chicken Schnitzel</h3><p>Crispy chicken, shaved fennel, lemon, warm potato salad</p></div><span class="price">$22</span></article>
+            <article class="menu-item" data-category="lunch"><div><h3>Market Caesar</h3><p>Little gem, parmesan, sourdough crumbs, anchovy dressing</p></div><span class="price">$15</span></article>
+            <article class="menu-item" data-category="lunch"><div><h3>Midnight Spaghetti</h3><p>Garlic, chili, tomato, basil, pecorino, olive oil</p></div><span class="price">$18</span></article>
+            <article class="menu-item" data-category="sweet"><div><h3>Salted Caramel Pie</h3><p>Silky caramel custard, flaky crust, sea salt, cream</p></div><span class="price">$10</span></article>
+            <article class="menu-item" data-category="sweet"><div><h3>Soft Serve Sundae</h3><p>Vanilla soft serve, chocolate shell, roasted peanuts, cherry</p></div><span class="price">$8</span></article>
+          </div>
+        </div>
+      </section>
+
+      <section class="feature-strip">
+        <div class="feature-image" role="img" aria-label="Fresh pasta being served on a plate"></div>
+        <div class="feature-copy">
+          <div class="eyebrow cream-label">The Avenue ritual</div>
+          <h2>Lunch that turns into dinner.</h2>
+          <p>Take your time. Start with something cold, stay for one more plate, and let the afternoon do what it does best.</p>
+          <a class="button" href="#reserve">Find your table</a>
+        </div>
+      </section>
+
+      <section class="reserve-section" id="reserve">
+        <div class="section">
+          <div class="reserve-grid">
+            <div class="reserve-copy">
+              <div class="eyebrow cream-label">Come on in</div>
+              <h2>Save a seat.</h2>
+              <p>Planning ahead? Tell us when you'll be here and we'll have a booth waiting.</p>
+              <div class="details">
+                <div class="detail"><span>Monday — Friday</span><span>7am — 11pm</span></div>
+                <div class="detail"><span>Saturday — Sunday</span><span>8am — midnight</span></div>
+                <div class="detail"><span>Find us</span><span>14 Avenue Street<br>Downtown</span></div>
+              </div>
+            </div>
+            <form class="reservation-form" id="reservation-form">
+              <div class="field"><label for="name">Your name</label><input id="name" name="name" required placeholder="Jane Smith"></div>
+              <div class="field"><label for="email">Email address</label><input id="email" type="email" name="email" required placeholder="jane@example.com"></div>
+              <div class="field"><label for="date">Date</label><input id="date" type="date" name="date" required></div>
+              <div class="field"><label for="time">Time</label><select id="time" name="time"><option>7:00 pm</option><option>7:30 pm</option><option>8:00 pm</option><option>8:30 pm</option><option>9:00 pm</option></select></div>
+              <div class="field full"><label for="guests">Party size</label><select id="guests" name="guests"><option>2 guests</option><option>3 guests</option><option>4 guests</option><option>5+ guests</option></select></div>
+              <div class="success-message" id="success-message" role="status">Thanks, <span id="guest-name">friend</span>. Your table request is on its way.</div>
+              <div class="form-footer"><span class="form-note">We'll confirm by email within a few minutes.</span><button class="button" type="submit">Request a table</button></div>
+            </form>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer id="visit">
+      <div class="footer-top">
+        <div><div class="eyebrow">Keep in touch</div><h2>Come hungry.<br>Leave happy.</h2></div>
+        <div class="footer-contact"><a href="mailto:hello@avenuediner.com">hello@avenuediner.com</a><a href="tel:+12125550187">+1 212 555 0187</a><span>14 Avenue Street, Downtown</span></div>
+      </div>
+      <div class="footer-bottom"><span>© 2026 Avenue Diner</span><span>Breakfast · Lunch · Dinner · Always</span></div>
+    </footer>
+  </div>
+  <script>
+    const tabs = document.querySelectorAll('.tab');
+    const menuItems = document.querySelectorAll('.menu-item');
+    tabs.forEach((tab) => {
+      tab.addEventListener('click', () => {
+        const category = tab.dataset.category;
+        tabs.forEach((item) => {
+          const isActive = item === tab;
+          item.classList.toggle('active', isActive);
+          item.setAttribute('aria-selected', String(isActive));
+        });
+        menuItems.forEach((item) => {
+          item.classList.toggle('hidden', category !== 'all' && item.dataset.category !== category);
+        });
+      });
+    });
+
+    const form = document.querySelector('#reservation-form');
+    const successMessage = document.querySelector('#success-message');
+    const guestName = document.querySelector('#guest-name');
+    form.addEventListener('submit', (event) => {
+      event.preventDefault();
+      guestName.textContent = document.querySelector('#name').value.split(' ')[0] || 'friend';
+      successMessage.classList.add('show');
+      form.reset();
+    });
+  </script>
+</body>
+</html>
